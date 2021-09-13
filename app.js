@@ -28,7 +28,7 @@ const rutaApi = require("./routes/api/index");
 app.use('/', rutaAnuncios);
 
 //Ruta creada a nuestra API
-//app.use("/api", require("./routes/api/index"));
+app.use("/api", rutaApi);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

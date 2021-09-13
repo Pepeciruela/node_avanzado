@@ -46,35 +46,26 @@ router.get("/", async (req, res, next) => {
             }
         }
 
+        //Busqueda de los tags
         if(tags){
             if(tags.includes(",")){
-                let tagsFiltro = tags
+                let tagsFiltro = tags.split(",");
+                filtro.tags = {};
+                filtro.tags["$in"] = tagsFiltro;
+            } else {
+                filtro.tags = tags;
             }
         }
 
-        //Busqueda de los tags
+        res.locals.anuncio = await Anuncio (filtro, skip, limit, null, sort );
+
+        res.render("index", {title: "Nodepop"});
+
     }catch (err) {
         next(err);
         return;
     }
 });
 
-
-//Petición POST para crear un nuevo anuncio
-
-router.post("/", async (req, res, next) => {
-    try {
-        const anuncioData = req.body;
-
-        const anuncio = new Anuncio(anuncioData);
-
-        const anuncioCreado = await anuncio.save();
-
-        res.json({result: anuncioCreado});
-    } catch (err) {
-        next(err);
-        return;
-    }
-});
-
 module.exports = router;
+
