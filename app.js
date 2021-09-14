@@ -25,7 +25,7 @@ const rutaAnuncios = require("./routes/anuncios");
 const rutaApi = require("./routes/api/index");
 
 //Ruta creada a nuestra web
-app.use('/', rutaAnuncios);
+app.use("/", rutaAnuncios);
 
 //Ruta creada a nuestra API
 app.use("/api", rutaApi);

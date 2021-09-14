@@ -57,7 +57,7 @@ router.get("/", async (req, res, next) => {
             }
         }
 
-        res.locals.anuncio = await Anuncio (filtro, skip, limit, null, sort );
+        res.locals.anuncios = await Anuncio.lista (filtro, skip, limit, null, sort );
 
         res.render("index", {title: "Nodepop"});
 
