@@ -4,6 +4,9 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+const rutaAnuncios = require("./routes/anuncios");
+const rutaApi = require("./routes/api/index");
+
 const app = express();
 
 //CONEXIÓN A NUESTRA BASE DE DATOS
@@ -19,10 +22,7 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
-
-const rutaAnuncios = require("./routes/anuncios");
-const rutaApi = require("./routes/api/index");
+app.use(express.static(path.join(__dirname, '/public')));
 
 //Ruta creada a nuestra web
 app.use("/", rutaAnuncios);
