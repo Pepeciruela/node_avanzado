@@ -19,7 +19,7 @@
         <p>Producto deseado</p>
       <% } %>
       <div class="img">
-        <img src="/public/images/<%= anuncio.foto %>">
+        <img src="/public/images/<%=anuncio.foto %>" alt="" style="max-width: 300px; max-height: 300px;">
       </div>
       <p class="price">Precio: <span class="price-number"><%= anuncio.precio %></span> €</p>
         <div class="tags">

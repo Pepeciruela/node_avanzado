@@ -11,11 +11,11 @@ router.get("/", async (req, res, next) => {
         const nombre = req.query.nombre;
         const venta = req.query.venta;
         const precio = req.query.precio;
-        const foto = req.query.foto;
+        //const foto = req.query.foto;
         const tags = req.query.tags;
         const skip = parseInt(req.query.skip);
         const limit = parseInt(req.query.limit);
-        const fields = req.query.fields;
+        const select = req.query.select;
         const sort = req.query.sort;
 
         const filtro = {};
@@ -57,9 +57,9 @@ router.get("/", async (req, res, next) => {
             }
         }
 
-        res.locals.anuncios = await Anuncio.lista (filtro, skip, limit, null, sort );
+        const anuncios = await Anuncio.lista (filtro, skip, limit, select, sort );
 
-        res.render("index", {title: "Nodepop"});
+        res.render("index", {title: "Nodepop", anuncios});
 
     }catch (err) {
         next(err);

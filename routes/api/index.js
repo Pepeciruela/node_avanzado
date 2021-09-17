@@ -15,7 +15,7 @@ router.get("/", async (req, res, next) => {
         const tags = req.query.tags;
         const skip = parseInt(req.query.skip);
         const limit = parseInt(req.query.limit);
-        const fields = req.query.fields;
+        const select = req.query.select;
         const sort = req.query.sort;
 
         const filtro = {};
@@ -57,7 +57,7 @@ router.get("/", async (req, res, next) => {
             }
         }
 
-        const anuncios = await Anuncio.lista (filtro, skip, limit, null, sort );
+        const anuncios = await Anuncio.lista (filtro, skip, limit, select, sort );
 
         res.json({results: anuncios});
 
