@@ -1,7 +1,7 @@
 # Práctica Nodepop.
 
 ## Descargar el repositorio o clonarlo.
-> 
+> git clone https://github.com/Pepeciruela/nodepop.git
 
 ## Instalar las dependencias.
 
@@ -48,7 +48,11 @@ En esta ruta obtendremos todos los anuncios existentes y podremos aplicar los fi
 
 Esta ruta devolverá un JSON con todos los anuncios existentes. Sobre esta URL podremos aplicar los filtros existentes para nuestra búsqueda al igual que en la ruta Web.
 
-Además podemos utilizar el método POST para crear nuevos anuncios.
+Además podemos utilizar el método POST para crear nuevos anuncios y el metodo DELETE para eliminarlos (en este caso eliminaremos los anuncios por su ID).
+
+### Ruta a los TAGS:
+
+> http://localhost:3000/api/tags
 
 
 
