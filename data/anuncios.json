@@ -4,7 +4,7 @@
     "nombre": "Bicicleta",
     "venta": true,
     "precio": 230.15,
-    "foto": "bici.jpg",
+    "foto": "bici.png",
     "tags": [ "lifestyle", "motor"]
     },
     {
@@ -18,14 +18,14 @@
     "nombre": "Patinete",
     "venta": true,
     "precio": 24.00,
-    "foto": "patin.jpg",
+    "foto": "patin.png",
     "tags": [ "lifestyle"]
     },
     {
     "nombre": "Motocicleta",
     "venta": false,
     "precio": 1500.00,
-    "foto": "moto.jpg",
+    "foto": "moto.png",
     "tags": [ "lifestyle", "motor"]
     }
     ]
