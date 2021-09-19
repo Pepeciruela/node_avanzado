@@ -29,6 +29,11 @@ schemaAnuncio.statics.lista = (filtro, skip, limit, fields, sort) => {
     return query.exec();
 };
 
+schemaAnuncio.statics.etiquetas = () => {
+    const query = Anuncio.find().distinct("tags");
+    return query.exec();
+}
+
 //Creamos el modelo
 const Anuncio = mongoose.model("Anuncio", schemaAnuncio);
 

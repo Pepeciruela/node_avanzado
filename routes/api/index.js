@@ -71,25 +71,15 @@ router.get("/", async (req, res, next) => {
 
 router.get("/tags", async(req, res, next) =>{
     try{
-        let etiquetas = await Anuncio.find().select("tags - _id");
+        const etiquetas = await Anuncio.etiquetas();
 
-        let etiquetasBusqueda = [];
+        res.json({result: etiquetas});
 
-        etiquetas.forEach (etiqueta => {
-            etiqueta.tags.forEach(tag =>{
-                if(etiquetasBusqueda.indexOf(tag) < 0){
-                    etiquetasBusqueda.push(tag);
-                }
-            });
-        });
-
-        res.json({results: etiquetasBusqueda});
     } catch (err) {
         next(err);
         return;
     }
 });
-
 
 //Petición POST para crear un nuevo anuncio
 
