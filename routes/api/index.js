@@ -22,7 +22,7 @@ router.get("/", async (req, res, next) => {
 
         //Permitimos el filtro por nombre del producto
         if(nombre){
-            filtro.nombre = nombre;
+            filtro.nombre = new RegExp('^' + req.query.nombre, "i")
         }
 
         //Permitimos el filtro por venta del producto
