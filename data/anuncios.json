@@ -13,6 +13,20 @@
     "precio": 50.00,
     "foto": "iphone.png",
     "tags": [ "lifestyle", "mobile"]
+    },
+    {
+    "nombre": "Patinete",
+    "venta": true,
+    "precio": 24.00,
+    "foto": "patin.jpg",
+    "tags": [ "lifestyle"]
+    },
+    {
+    "nombre": "Motocicleta",
+    "venta": false,
+    "precio": 1500.00,
+    "foto": "moto.jpg",
+    "tags": [ "lifestyle", "motor"]
     }
     ]
     }
