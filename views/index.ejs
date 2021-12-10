@@ -8,7 +8,7 @@
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">Productos disponibles</a>
+        <a class="navbar-brand" href="#"><%=__('Available products')  %></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -16,23 +16,23 @@
         <div class="collapse navbar-collapse" id="navbarColor01">
           <ul class="navbar-nav me-auto">
             <li class="nav-item">
-              <a class="nav-link active" href="#">Menú
+              <a class="nav-link active" href="#"> <%= __('Menu')  %>
                 <span class="visually-hidden">(current)</span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Características</a>
+              <a class="nav-link" href="#"><%= __('Features')  %></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Precio</a>
+              <a class="nav-link" href="#"><%= __('Price')  %></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Contactar</a>
+              <a class="nav-link" href="#"><%= __('Contact')  %></a>
             </li>
           </ul>
           <form class="d-flex">
             <input class="form-control me-sm-2" type="text" placeholder="Buscar">
-            <button class="btn btn-secondary my-2 my-sm-0" type="submit">Buscar</button>
+            <button class="btn btn-secondary my-2 my-sm-0" type="submit"><%= __('Search')  %></button>
           </form>
         </div>
       </div>
@@ -45,11 +45,11 @@
       </img>
       <ul class="list-group list-group-flush">
         <% if (anuncio.venta) {%> 
-        <li class="list-group-item">Producto a la venta</li>
+        <li class="list-group-item"><%= __('For sale')  %></li>
         <% }else{ %> 
-        <li class="list-group-item">Producto deseado</li>
+        <li class="list-group-item"><%= __('Purchase')  %></li>
         <% } %> 
-        <li class="list-group-item">Precio:<span><%= anuncio.precio %></span> €</li>
+        <li class="list-group-item"><%= __('Price:')  %><span><%= anuncio.precio %></span> €</li>
         <% anuncio.tags.forEach( tag => { %>
           <li class="list-group-item"><%= tag %></li>
           <% }); %>

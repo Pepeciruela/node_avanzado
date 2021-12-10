@@ -17,11 +17,15 @@
 </head>
 <body>
     <!-- Navigation-->
+    <a class="navbar-brand" href="#!">Nodeapi</a>
+        <% getLocales().forEach(locale => { %>
+            <a  href="/change-locale/<%= locale  %> "><%= locale  %></a>
+        <% }); %> 
     <nav class="navbar navbar-light bg-light static-top">
         <div class="container">
-            <a class="navbar-brand" href="#!">Nodeapi</a>
+            
             <% if(session.usuarioLogado) { %>
-            <a class="navbar-brand" href="/anuncios">Anuncios</a>
+            <a class="navbar-brand" href="/anuncios"><%= __('Adverts')  %></a>
             <a class="btn btn-primary" href="/logout">Logout</a>
             <% } else { %>
             <a class="btn btn-primary" href="/login">Login</a>

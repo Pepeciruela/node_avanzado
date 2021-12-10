@@ -11,15 +11,12 @@ const jwtAuth = require('./lib/jwtAuthMiddleware');
 const LoginController = require('./controllers/loginController');
 const MongoStore = require('connect-mongo');
 
+const app = express();
 
-/* jshint ignore:start */
 const db = require('./lib/connectMongoose');
-/* jshint ignore:end */
 
 // Cargamos las definiciones de todos nuestros modelos
 require('./models/Anuncio');
-
-const app = express();
 
 const loginController = new LoginController();
 
@@ -48,24 +45,23 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+const i18n = require('./lib/i18nConfigure');
+app.use(i18n.init);
+
+app.use('/', require('./routes/login'));
 app.use('/login', require('./routes/login'));
 
+app.use('/anuncios', sessionAuth, require('./routes/anuncios'));
+app.use('/change-locale', require('./routes/change-locale'));
+
 app.get('/login', loginController.index);
-
 app.post('/login', loginController.post);
-
 app.get('/logout', loginController.logout)
 
 
 // Global Template variables
 app.locals.title = 'NodePop';
-
-// Web
-
-app.use('/anuncios', sessionAuth, require('./routes/anuncios'));
-
-
-
 
 // API v1
 app.use('/api/anuncios', jwtAuth, require('./routes/api/index'));
