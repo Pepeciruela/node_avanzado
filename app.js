@@ -9,11 +9,7 @@ const session = require('express-session');
 const sessionAuth = require('./lib/sessionMiddleware');
 const jwtAuth = require('./lib/jwtAuthMiddleware');
 const LoginController = require('./controllers/loginController');
-//const FotoController = require('./controllers/fotoController');
 const MongoStore = require('connect-mongo');
-const multer = require('multer');
-
-const upload = require('./lib/multerConfigure');
 
 const app = express();
 
@@ -23,7 +19,6 @@ const db = require('./lib/connectMongoose');
 require('./models/Anuncio');
 
 const loginController = new LoginController();
-//const fotoController = new FotoController();
 
 app.use(session({
   name: 'nodeapi-session',
@@ -69,7 +64,7 @@ app.get('/logout', loginController.logout)
 app.locals.title = 'NodePop';
 
 // API v1
-app.use('/api/anuncios', require('./routes/api/index')); //Poner jwtAuth
+app.use('/api/anuncios', jwtAuth, require('./routes/api/index'));
 app.post('/api/login', loginController.postJWT);
 
 // catch 404 and forward to error handler
