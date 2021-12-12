@@ -7,7 +7,7 @@
 
 > npm install
 
-## Inicializar la base de datos.
+## Inicializar la base de datos. Esto creará 4 anuncios y un nuevo usuario.
 
 > npm run iniciarDB
 
@@ -27,9 +27,20 @@ o
 
 ### Ruta a la web:
 
+Tanto las rutas a la página de login como a la página de anuncios tienen implementada una internacionalización en la parte superios, permitiendo cambiar el idioma entre español e inglés.
+
 > http://localhost:3000
 
-En esta ruta obtendremos todos los anuncios existentes y podremos aplicar los filtros necesarios.
+En esta ruta obtendremos la opción de login para acceder a la plataforma. El email y contraseña de acceso es el siguiente:
+
+* email
+> user@example.com
+* password
+> 1234
+
+> http://localhost:3000/anuncios
+
+En esta ruta obtendremos todos los anuncios existentes y podremos aplicar los filtros necesarios. Es una ruta protegida que require de login para acceder (ver punto anterior).
 
 * Nombre
 > http://localhost:3000/?nombre=mo
@@ -44,7 +55,13 @@ En esta ruta obtendremos todos los anuncios existentes y podremos aplicar los fi
 
 ### Ruta a la API:
 
-> http://localhost:3000/api
+> http://localhost:3000/api/login
+
+Con el método POST desde un servicio tipo POSTMAN nos permitirá autenticarnos, para acceder al token que da permiso para operar.
+
+> http://localhost:3000/api/anuncios
+
+Es una ruta protegida que require poner el token de autentificación obtenido en la petición POST a login.
 
 Esta ruta devolverá un JSON con todos los anuncios existentes. Sobre esta URL podremos aplicar los filtros existentes para nuestra búsqueda al igual que en la ruta Web.
 
@@ -53,6 +70,8 @@ Además podemos utilizar el método POST para crear nuevos anuncios y el metodo 
 ### Ruta a los TAGS:
 
 > http://localhost:3000/api/tags
+
+
 
 
 
