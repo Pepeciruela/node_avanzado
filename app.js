@@ -10,6 +10,10 @@ const sessionAuth = require('./lib/sessionMiddleware');
 const jwtAuth = require('./lib/jwtAuthMiddleware');
 const LoginController = require('./controllers/loginController');
 const MongoStore = require('connect-mongo');
+const multer = require('multer');
+const storageZone = multer.memoryStorage();
+const upload = multer ({storage: storageZone});
+
 
 const app = express();
 

@@ -15,8 +15,6 @@ const schemaAnuncio = mongoose.Schema({
     },
     foto: {type: String,
     },
-    thumbnail: {type: String,
-    },
     tags: {type: [String]}
 });
 

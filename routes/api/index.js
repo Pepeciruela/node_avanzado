@@ -3,6 +3,9 @@
 const express = require('express');
 const router = express.Router();
 const Anuncio = require("../../models/Anuncio");
+const {upload} = require('../../lib/multerConfigure');
+const convertirImagen = require('../../lib/resizeImage');
+
 
 /* GET ANUNCIOS: OBTENER UNA LISTA DE AUNCIOS */
 
@@ -83,15 +86,22 @@ router.get("/tags", async(req, res, next) =>{
 
 //Petición POST para crear un nuevo anuncio
 
-router.post("/", async (req, res, next) => {
+router.post("/", upload.single('foto'), async (req, res, next) => {
     try {
         const anuncioData = req.body;
-
-        const anuncio = new Anuncio(anuncioData);
+        const foto = req.file;
+        
+        const anuncio = new Anuncio({
+            nombre: anuncioData.nombre,
+            precio: anuncioData.precio,
+            venta: anuncioData.venta,
+            tags: anuncioData.tags,
+            foto: `${await convertirImagen(foto)}.jpg`
+        });
 
         const anuncioCreado = await anuncio.save();
 
-        res.json({result: anuncioCreado});
+        res.status(201).json({result: anuncioCreado});
     } catch (err) {
         next(err);
         return;
@@ -112,5 +122,7 @@ router.delete("/:id", async (req, res, next) => {
         return;
     }
 })
+
+
 
 module.exports = router;
